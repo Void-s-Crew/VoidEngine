@@ -1,10 +1,10 @@
-# project.vs - Base project configuration for Void Engine
+# project.vs - Minimal Void Engine project using only source/Main.vs
 
 project:
-    name: "Void Engine"
+    name: "Void Engine Demo"
     version: "0.1.0"
     author: "Ander"
-    description: "Minimal base project using Void Engine"
+    description: "Minimal Void Engine project using only source/Main.vs"
 
 # Window settings
 window:
@@ -25,19 +25,5 @@ engine:
 
 # Default scene
 scenes:
-    - "scenes/Main.vs"
-    defaultScene: "scenes/Main.vs"
-
-# Assets
-assets:
-    images:
-        player: "assets/images/player.png"
-        background: "assets/images/bg.png"
-    sounds:
-        bgm: "assets/sounds/music.ogg"
-
-# Scripts
-scripts:
-    global:
-        onStart: "scripts/globalStart.vs"
-        onUpdate: "scripts/globalUpdate.vs"
+    - "source/Main.vs"
+    defaultScene: "source/Main.vs"
