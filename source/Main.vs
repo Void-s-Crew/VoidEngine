@@ -1,15 +1,11 @@
-# source/Main.vs - Main scene acting as engine system
+# source/Main.vs - Main scene using System.vs
+
+# Import the system class
+import backend.System
 
 onCreate:
-    # Create a test rectangle representing the system (instead of player)
-    systemEntity.width = 50
-    systemEntity.height = 50
-    systemEntity.color = "#00FFFF"     # cyan placeholder
-    systemEntity.x = 100
-    systemEntity.y = 500
-    systemEntity.speed = 250
-    systemEntity.jumpForce = 14
-    systemEntity.onGround = true
+    # Create system entity
+    systemEntity = System.new()
 
     # Camera setup
     camera.target = systemEntity
@@ -20,30 +16,13 @@ onCreate:
     engine.gravity = 0.8
 
 onUpdate:
-    # Horizontal movement
-    if input.isPressed("ArrowLeft"):
-        systemEntity.x -= systemEntity.speed * deltaTime
-    if input.isPressed("ArrowRight"):
-        systemEntity.x += systemEntity.speed * deltaTime
-
-    # Jump
-    if input.isPressed("Space") and systemEntity.onGround:
-        systemEntity.y -= systemEntity.jumpForce * 60 * deltaTime
-        systemEntity.onGround = false
-
-    # Gravity
-    if not systemEntity.onGround:
-        systemEntity.y += engine.gravity * 60 * deltaTime
-
-    # Ground collision
-    if systemEntity.y > 500:
-        systemEntity.y = 500
-        systemEntity.onGround = true
+    # Update the system entity
+    systemEntity.update()
 
 onBeat:
-    # Test camera shake every beat
+    # Camera shake every beat
     camera.shake(0.02, 0.1)
 
 onStep:
-    # Optional: log current step for debug
+    # Optional debug log
     trace("Step event triggered")
