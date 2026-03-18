@@ -1,7 +1,7 @@
 # project.vs - Base project configuration for Void Engine
 
 project:
-    name: "Void Engine Demo"
+    name: "Void Engine"
     version: "0.1.0"
     author: "Ander"
     description: "Minimal base project using Void Engine"
